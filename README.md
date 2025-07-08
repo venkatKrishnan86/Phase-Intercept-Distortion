@@ -27,6 +27,7 @@ This will install the required dependencies for the project.
 
 ### Phase Intercept Distortion examples
 We have added some example audios from [AudioSet](https://research.google.com/audioset/) in the directory: `examples/originals`.
+This dataset is made available by Google Inc. under a [Creative Commons Attribution 4.0 International (CC BY 4.0) license](https://creativecommons.org/licenses/by/4.0/).
 To test the effect of phase intercept distortion on these samples, run -
 ```bash
 python generate-examples.py
