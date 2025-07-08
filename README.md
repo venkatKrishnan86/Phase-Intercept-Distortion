@@ -4,6 +4,7 @@
 
 Phase intercept distortion is a form of *phase distortion*, created by an operation called the frequency-independent phase shift.
 The transfer function of a frequency-independent phase shift of $\theta$ is defined as:
+
 $$
 |H(\omega)|= 1
 $$
