@@ -52,6 +52,7 @@ To use phase intercept distortion for data augmentation in a PyTorch training pi
 
 ```python
 import torch
+import numpy as np
 from augmentation import PhaseInterceptDistortion
 
 # Initialize the module

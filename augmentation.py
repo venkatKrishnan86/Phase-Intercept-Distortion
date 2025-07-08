@@ -45,14 +45,13 @@ class PhaseInterceptDistortion(torch.nn.Module):
                 If None, defaults to random angles in the range [-pi, pi] with a shape of (batch_size,).
                 The phase intercept distortion angle in radians.
         """
+        if theta is None:
+            theta = torch.rand(audio.shape[0]) * 2 * np.pi - np.pi
 
         assert len(audio.shape) >= 2, \
             "The audio tensor must be 2 dimensional of the form (channels, samples) or 3 dimensional of the form (batch_size, channels, samples)"
         assert len(theta.shape) == 1 and theta.shape[0] == audio.shape[0], \
             "The theta tensor must be 1 dimensional of the form (batch_size,)"
-        
-        if theta is None:
-            theta = torch.rand(audio.shape[0]) * 2 * np.pi - np.pi
 
         X = torch.fft.fft(audio, dim=-1, norm='ortho')
         num_samples = X.shape[-1]
