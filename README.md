@@ -2,7 +2,8 @@
 
 ## Introduction
 
-Phase intercept distortion is a form of *phase distortion*, created by an operation called the frequency-independent phase shift.
+Phase distortion refers to the alteration of the phase relationships between frequencies in a signal, which can be perceptible.
+**Phase intercept distortion** is a form of *phase distortion*, created by an operation called the frequency-independent phase shift.
 The transfer function of a frequency-independent phase shift of $\theta$ is defined as:
 
 $$
@@ -13,8 +14,15 @@ $$
 \angle H(\omega) = \theta \cdot sgn(\omega)
 $$
 
-The paper, [The Perception of Phase Intercept Distortion and its Application in Data Augmentation](https://www.arxiv.org/abs/2506.14571), presents evidence that the special case of *phase-intercept distortion* is **not perceptible** in real-world sounds, and shows how this fact can be leveraged for data augmentation in audio-based machine learning applications.
-This repository provides a `numpy` and `torch` implementation of applying this phase intercept distortion to -
+where $\theta$ is the phase intercept shift angle, and $sgn(\omega)$ is the signum function of the frequency $\omega$.
+In simpler words, this means that the phase of each frequency component is shifted by a constant angle $\theta$, regardless of its frequency, leaving the amplitude unchanged.
+
+
+## Overview
+The paper, [The Perception of Phase Intercept Distortion and its Application in Data Augmentation](https://www.arxiv.org/abs/2506.14571), presents evidence through human subject experiments that the special case of *phase-intercept distortion* is **not perceptible** in real-world sounds, although this form of distortion *changes* a signal’s waveform significantly.
+The paper also describes how this fact can be leveraged for data augmentation in audio-based machine learning applications.
+
+This repository implements the frequency-independent phase shift operation to introduce phase intercept distortion, which can be used for data augmentation in audio-based machine learning applications. It provides a `numpy` and `torch` implementation of applying this phase intercept distortion to -
 1. Single audio array in `numpy`
 2. Batch of training samples in `torch` for data augmentation
 
@@ -27,7 +35,7 @@ This will install the required dependencies for the project.
 
 ### Phase Intercept Distortion examples
 We have added some example audios from [AudioSet](https://research.google.com/audioset/) in the directory: `examples/originals`.
-This dataset is made available by Google Inc. under a [Creative Commons Attribution 4.0 International (CC BY 4.0) license](https://creativecommons.org/licenses/by/4.0/).
+These example data samples are made available by Google Inc. under a [Creative Commons Attribution 4.0 International (CC BY 4.0) license](https://creativecommons.org/licenses/by/4.0/).
 To test the effect of phase intercept distortion on these samples, run -
 ```bash
 python generate-examples.py
