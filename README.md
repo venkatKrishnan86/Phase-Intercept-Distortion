@@ -18,13 +18,12 @@ pip install -r requirements.txt
 ```
 ### Phase Intercept Distortion examples
 We have added some example audios from [AudioSet](https://research.google.com/audioset/) in the directory: `examples/originals`.
-To test the effect of phase intercept distortion on these samples -
-1. Run
+To test the effect of phase intercept distortion on these samples, run -
 ```bash
 python generate-examples.py
 ```
-2. The modified/distorted audio will be saved inside the `examples/distorted` directory.
-3. The original and distorted audio plots will be saved inside `examples/plots` as `.png` files.
+- The modified/distorted audio will be saved inside the `examples/distorted` directory.
+- The original and distorted audio plots will be saved inside `examples/plots` as `.png` files.
 
 
 ### Applying Phase Intercept Distortion to a single audio
