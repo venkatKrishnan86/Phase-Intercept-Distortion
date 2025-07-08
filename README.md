@@ -19,7 +19,7 @@ In simpler words, this means that the phase of each frequency component is shift
 
 
 ## Overview
-The paper, [The Perception of Phase Intercept Distortion and its Application in Data Augmentation](https://www.arxiv.org/abs/2506.14571), presents evidence through human subject experiments that the special case of *phase-intercept distortion* is **not perceptible** in real-world sounds, although this form of distortion *changes* a signal’s waveform significantly.
+The paper, [The Perception of Phase Intercept Distortion and its Application in Data Augmentation](https://www.arxiv.org/abs/2506.14571), presents evidence through human subject experiments that the special case of *phase-intercept distortion* is **not perceptible** in real-world sounds, although this form of distortion **changes a signal’s waveform significantly**.
 The paper also describes how this fact can be leveraged for data augmentation in audio-based machine learning applications.
 
 This repository implements the frequency-independent phase shift operation to introduce phase intercept distortion, which can be used for data augmentation in audio-based machine learning applications. It provides a `numpy` and `torch` implementation of applying this phase intercept distortion to -
