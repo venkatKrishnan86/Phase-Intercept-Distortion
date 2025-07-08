@@ -1,6 +1,10 @@
 import numpy as np
 import torch
+import librosa
+import os
+from argparse import ArgumentParser
 from scipy.signal import hilbert
+from scipy.io import wavfile
 
 def phase_intercept_distortion(audio: np.ndarray, theta: float):
     """
@@ -54,3 +58,23 @@ def apply_augmentation_phase_intercept_distortion(
     else:
         raise ValueError("The audio tensor must be 2 or 3 dimensional.")
     return torch.fft.ifft(X, dim=-1, norm='ortho').real
+
+if __name__ == "__main__":
+    parser = ArgumentParser(description="Apply phase intercept distortion to a single audio.")
+    parser.add_argument("audio_path", type=str, help="Path to the audio file.")
+    parser.add_argument("output_loc", type=str, help="Path to the output audio file.")
+    parser.add_argument("--theta", type=float, default=-np.pi/2, help="Phase intercept distortion angle in radians (Default: -pi/2).")
+    args = parser.parse_args()
+
+    # Load audio file
+    print(f"Augmenting audio from {args.audio_path} with theta={args.theta:.3f} radians")
+    audio, sample_rate = librosa.load(args.audio_path, sr=None, mono=False)
+
+    # Apply augmentation
+    augmented_audio = phase_intercept_distortion(audio, args.theta)
+
+    # Save the augmented audio
+    output_loc = os.path.join(args.output_loc, os.path.basename(args.audio_path))
+    print(f"Saving augmented audio to {output_loc}")
+    os.makedirs(os.path.dirname(output_loc), exist_ok=True)
+    wavfile.write(output_loc, sample_rate, augmented_audio.T.astype(np.float32))
