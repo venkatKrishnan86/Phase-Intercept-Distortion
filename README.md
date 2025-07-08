@@ -4,7 +4,13 @@
 
 Phase intercept distortion is a form of *phase distortion*, created by an operation called the frequency-independent phase shift.
 The transfer function of a frequency-independent phase shift of $\theta$ is defined as:
-$$|H(\omega)|= 1; \Phi(\omega) = \theta \cdot sgn(\omega)$$
+$$
+|H(\omega)|= 1
+$$
+
+$$
+\angle H(\omega) = \theta \cdot sgn(\omega)
+$$
 
 The paper, [The Perception of Phase Intercept Distortion and its Application in Data Augmentation](https://www.arxiv.org/abs/2506.14571), presents evidence that the special case of *phase-intercept distortion* is not perceptible in real-world sounds, and shows how this fact can be leveraged for data augmentation in audio-based machine learning applications.
 This repository provides a `numpy` and `torch` implementation of applying this phase intercept distortion to -
